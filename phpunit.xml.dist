@@ -32,6 +32,9 @@
             </exclude>
         </whitelist>
     </filter>
+    <logging>
+        <log type="coverage-clover" target="build/coverage.xml"/>
+    </logging>
     <listeners>
         <listener class="League\PHPUnitCoverageListener\Listener">
             <arguments>
@@ -52,7 +55,7 @@
                         <string>https://coveralls.io/api/v1/jobs</string>
                     </element>
                     <element key="coverage_dir">
-                        <string>/tmp/jlinn/stripe-api-php</string>
+                        <string>build/</string>
                     </element>
                 </array>
             </arguments>

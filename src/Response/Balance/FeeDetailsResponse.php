@@ -1,33 +1,21 @@
 <?php
 /**
  * User: Joe Linn
- * Date: 3/26/2014
- * Time: 10:55 PM
+ * Date: 3/30/2014
+ * Time: 12:42 PM
  */
 
-namespace Stripe\Response\Charges;
+namespace Stripe\Response\Balance;
 
 use JMS\Serializer\Annotation\Type;
 
-class RefundResponse
+class FeeDetailsResponse
 {
-    /**
-     * @Type("string")
-     * @var string
-     */
-    protected $object;
-
     /**
      * @Type("integer")
      * @var int
      */
     protected $amount;
-
-    /**
-     * @Type("integer")
-     * @var int
-     */
-    protected $created;
 
     /**
      * @Type("string")
@@ -39,7 +27,19 @@ class RefundResponse
      * @Type("string")
      * @var string
      */
-    protected $balanceTransaction;
+    protected $type;
+
+    /**
+     * @Type("string")
+     * @var string
+     */
+    protected $application;
+
+    /**
+     * @Type("string")
+     * @var string
+     */
+    protected $description;
 
     /**
      * @return int
@@ -60,25 +60,25 @@ class RefundResponse
     }
 
     /**
-     * @return int
+     * @return string
      */
-    public function getCreated()
+    public function getApplication()
     {
-        return $this->created;
+        return $this->application;
     }
 
     /**
-     * @param int $created
+     * @param string $application
      * @return $this
      */
-    public function setCreated($created)
+    public function setApplication($application)
     {
-        $this->created = $created;
+        $this->application = $application;
         return $this;
     }
 
     /**
-     * @return mixed
+     * @return string
      */
     public function getCurrency()
     {
@@ -86,7 +86,7 @@ class RefundResponse
     }
 
     /**
-     * @param mixed $currency
+     * @param string $currency
      * @return $this
      */
     public function setCurrency($currency)
@@ -98,36 +98,36 @@ class RefundResponse
     /**
      * @return string
      */
-    public function getObject()
+    public function getDescription()
     {
-        return $this->object;
+        return $this->description;
     }
 
     /**
-     * @param string $object
+     * @param string $description
      * @return $this
      */
-    public function setObject($object)
+    public function setDescription($description)
     {
-        $this->object = $object;
+        $this->description = $description;
         return $this;
     }
 
     /**
      * @return string
      */
-    public function getBalanceTransaction()
+    public function getType()
     {
-        return $this->balanceTransaction;
+        return $this->type;
     }
 
     /**
-     * @param string $balanceTransaction
+     * @param string $type
      * @return $this
      */
-    public function setBalanceTransaction($balanceTransaction)
+    public function setType($type)
     {
-        $this->balanceTransaction = $balanceTransaction;
+        $this->type = $type;
         return $this;
     }
 }

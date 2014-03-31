@@ -10,12 +10,17 @@ namespace Stripe;
 
 use Stripe\Api\AbstractApi;
 use Stripe\Api\Accounts;
+use Stripe\Api\ApplicationFees;
 use Stripe\Api\Cards;
 use Stripe\Api\Charges;
+use Stripe\Api\Coupons;
 use Stripe\Api\Customers;
+use Stripe\Api\Discounts;
+use Stripe\Api\Disputes;
 use Stripe\Api\InvoiceItems;
 use Stripe\Api\Invoices;
 use Stripe\Api\Plans;
+use Stripe\Api\Recipients;
 use Stripe\Api\Subscriptions;
 use Stripe\Api\Tokens;
 
@@ -23,12 +28,18 @@ use Stripe\Api\Tokens;
  * Class Stripe
  *
  * @property Api\Accounts $accounts
+ * @property Api\ApplicationFees $applicationFees
+ * @property Api\Balance $balance
  * @property Api\Cards $cards
  * @property Api\Charges $charges
+ * @property Api\Coupons $coupons
  * @property Api\Customers $customers
+ * @property Api\Discounts $discounts
+ * @property Api\Disputes $disputes
  * @property Api\InvoiceItems $invoiceItems
  * @property Api\Invoices $invoices
  * @property Api\Plans $plans
+ * @property Api\Recipients $recipients
  * @property Api\Subscriptions $subscriptions
  * @property Api\Tokens $tokens
  */
@@ -62,8 +73,8 @@ class Stripe
     public function __get($name)
     {
         $allowed = array(
-            'accounts', 'cards', 'charges', 'customers',
-            'invoiceItems', 'invoices', 'plans', 'subscriptions', 'tokens'
+            'accounts', 'applicationFees', 'balance', 'cards', 'charges', 'coupons', 'customers', 'discounts',
+            'disputes', 'invoiceItems', 'invoices', 'plans', 'recipients', 'subscriptions', 'tokens', 'transfers'
         );
 
         if (in_array($name, $allowed)) {
@@ -90,11 +101,32 @@ class Stripe
     }
 
     /**
+     * @return ApplicationFees
+     */
+    public function applicationFees()
+    {
+        return $this->getApi('ApplicationFees');
+    }
+
+    public function balance()
+    {
+        return $this->getApi('Balance');
+    }
+
+    /**
      * @return Cards
      */
     public function cards()
     {
         return $this->getApi('Cards');
+    }
+
+    /**
+     * @return Coupons
+     */
+    public function coupons()
+    {
+        return $this->getApi('Coupons');
     }
 
     /**
@@ -111,6 +143,22 @@ class Stripe
     public function customers()
     {
         return $this->getApi('Customers');
+    }
+
+    /**
+     * @return Discounts
+     */
+    public function discounts()
+    {
+        return $this->getApi('Discounts');
+    }
+
+    /**
+     * @return Disputes
+     */
+    public function disputes()
+    {
+        return $this->getApi('Disputes');
     }
 
     /**
@@ -135,6 +183,14 @@ class Stripe
     public function plans()
     {
         return $this->getApi('Plans');
+    }
+
+    /**
+     * @return Recipients
+     */
+    public function recipients()
+    {
+        return $this->getApi('Recipients');
     }
 
     /**
